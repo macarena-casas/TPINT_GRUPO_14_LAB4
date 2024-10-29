@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Nombre de nuestro home banking</title>
+<title>Emerald</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style>
     #menu-toggle1:checked + label + #menu {
@@ -40,31 +40,31 @@
       <input type="hidden" class="mr-3 hover:text-success">
     </nav>
     <a class="d-flex order-first order-lg-0 flex-grow-1 flex-lg-grow-0 title-font font-weight-medium align-items-center text-success justify-content-center mb-3 mb-md-0">
-     <%-- deberiamos poner un loguito o alguna imagen --%>
-      <span class="ml-3 h4 text-black">el nombre elegido</span>
+     <!-- deberiamos poner un loguito o alguna imagen -->
+      <span class="ml-3 h4 text-black">Emerald</span>
     </a>
     <div class="flex-lg-grow-1 d-flex justify-content-end ml-3 ml-lg-0">
      <% if (usuario == null) { %>
       <a href="Login.jsp" class="btn btn-outline-success border-0 py-1 px-3 focus:outline-none hover:bg-green rounded text-base mt-3 mt-md-0">Log in</a>
       <% } %>
-       <%/*
+       <!--
       <div class="relative d-inline-block text-left ml-3">
            <a href="MenuAdmin.jsp" class="btn btn-light border-0 py-1 px-3 focus:outline-none hover:bg-light rounded text-base mt-3 mt-md-0"></a>
       </div>
-      un menu */ %>
+      un menu -->
       <div class="relative d-inline-block text-left ml-3">
         <input type="checkbox" class="d-none" id="menu-toggle1"/>
        
           <label for="menu-toggle1" class="btn btn-outline-success shadow-sm px-2 py-1 text-sm font-weight-medium text-dark hover-bg-light-green cursor-pointer">
- 		 Menú 
+ 		 Menú Admin
  		 <i class="bi bi-arrow-down-short"></i>
 
         </label>
   
-        <div class="dropdown-menu dropdown-menu-right mt-2 w-100 rounded shadow-lg bg-white" id="menu">
+        <div class="dropdown-menu dropdown-menu-right mt-2 w-100 rounded shadow-lg bg-white" id="menuAdmin">
           <div class="py-1">
 
-            <a href="MenuAdmin.jsp" class="dropdown-item border-bottom border-success text-dark">Menú</a>
+            <a href="MenuAdmin.jsp" class="dropdown-item border-bottom border-success text-dark">Menú Admin</a>
             <a href="ServletAdminCliente?btnAgregarCliente" class="dropdown-item text-dark">Agregar Cliente</a>
             <a href="ServletAdminCliente?btnAdminClientes" class="dropdown-item text-dark">Administrar clientes</a>
             <a href="ServletAdminCuentas?btnAgregarCuenta" class="dropdown-item text-dark">Agregar Cuenta</a>
@@ -76,21 +76,21 @@
             </form>
           </div>
         </div>
-         <%/*
+         <!--
               <div class="relative d-inline-block text-left ml-3">
            <a href="MenuCliente.jsp" class="btn btn-light border-0 py-1 px-3 focus:outline-none hover:bg-light rounded text-base mt-3 mt-md-0"></a>
       </div>
-       u otro */%>
+       u otro -->
       <div class="relative d-inline-block text-left ml-3">
         <input type="checkbox" class="d-none" id="menu-toggle2"/>
         <label for="menu-toggle2"class="btn btn-outline-success shadow-sm px-2 py-1 text-sm font-weight-medium text-dark hover-bg-light-green cursor-pointer">
-  Menú 
+  Menú Cliente
   <i class="bi bi-arrow-down-short"></i>        
         </label>
 
-        <div class="dropdown-menu dropdown-menu-right mt-2 w-100 rounded shadow-lg bg-white" id="menu">
+        <div class="dropdown-menu dropdown-menu-right mt-2 w-100 rounded shadow-lg bg-white" id="menuClientes">
           <div class="py-1">
-            <a href="MenuCliente.jsp" class="dropdown-item border-bottom border-success text-dark">Menú</a>
+            <a href="MenuCliente.jsp" class="dropdown-item border-bottom border-success text-dark">Menú Cliente</a>
             <a href="ServletCliente?btnPerfil"  class="dropdown-item text-dark">Perfil</a>
             <a href="ServletCliente?btnCuentas" class="dropdown-item text-dark">Cuentas</a>
             <a href="ServletTransferenciasCliente?btnTransferencias"  class="dropdown-item text-dark">Transferencias</a>

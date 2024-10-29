@@ -12,7 +12,7 @@
 <footer class="text-dark  py-4" style="background-color:#4caa67;">
   <div class="container d-flex flex-wrap justify-content-between align-items-center">
     <a class="d-flex align-items-center text-dark mb-3 mb-md-0">
-      <span class="h4 ml-3">nombre elegido y agregar mas cosas al pie</span>
+      <span class="h4 ml-3">Emerald Bank</span>
     </a>
     <div class="d-flex flex-column flex-md-row align-items-center">
   

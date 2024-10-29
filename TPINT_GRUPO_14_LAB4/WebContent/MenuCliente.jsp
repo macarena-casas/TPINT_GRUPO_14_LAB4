@@ -31,6 +31,7 @@ if (session != null && session.getAttribute("usuario") != null && session.getAtt
 <body>
 
     <jsp:include page="NavBar.jsp" />
+    <!--
     <%   
         String respuesta = null;
         if(session != null && session.getAttribute("respuesta") != null){
@@ -38,12 +39,13 @@ if (session != null && session.getAttribute("usuario") != null && session.getAtt
             session.removeAttribute("respuesta");
     %>
     <script> 
-        alert('<%= respuesta%>');
+        alert('<%= No hay usuario logueado%>');
     </script>   
     <%
         respuesta = null;
     }
     %>
+    -->
     
     <div class="bg-white pt-3">
         <div class="content-background min-vh-100 d-flex align-items-center justify-content-center">
@@ -52,7 +54,7 @@ if (session != null && session.getAttribute("usuario") != null && session.getAtt
                     <div class="menu-container w-100 md:w-50 lg:w-33">
                         <h1 class="title-font font-medium text-3xl text-gray-900 text-center">Hola <%=usuario %> !</h1>
                         <br>
-                        <p class="leading-relaxed mt-4 text-center">Bienvenido/a al menú clientes de El nombre a elegir</p>
+                        <p class="leading-relaxed mt-4 text-center">Bienvenido/a al menú clientes de Emerald</p>
                         <br>
                         <div class="button-container space-y-4">
                             <form action="ServletCliente" method="get"> 
