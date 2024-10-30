@@ -31,7 +31,7 @@
 </style>
 </head>
 <body>
-	<header class="text-secondary fixed-top w-100 bg-light shadow">
+	<header class="text-secondary sticky-top w-100 bg-light shadow">
 		<div
 			class="container d-flex flex-wrap p-3 flex-column flex-md-row align-items-center">
 			<nav
