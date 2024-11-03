@@ -2,12 +2,13 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%
- String usuario = null;
- String tipoUsuario = null;
-if (session != null && session.getAttribute("usuario") != null && session.getAttribute("tipoUsuario") != null) {
-	usuario = (String) session.getAttribute("usuario");
-	tipoUsuario = (String) session.getAttribute("tipoUsuario");
-}
+	String usuario = null;
+	String tipoUsuario = null;
+	if (session != null && session.getAttribute("usuario") != null
+			&& session.getAttribute("tipoUsuario") != null) {
+		usuario = (String) session.getAttribute("usuario");
+		tipoUsuario = (String) session.getAttribute("tipoUsuario");
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@ if (session != null && session.getAttribute("usuario") != null && session.getAtt
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
-<%//aca puede ir imagen o logo %>
+
 <title>Menú de cliente</title>
 <style>
 .content-background {
@@ -25,9 +26,10 @@ if (session != null && session.getAttribute("usuario") != null && session.getAtt
 }
 
 .menu-container {
-	background: rgba(243, 244, 246, 0.9);
+	background-image: url('imagenes/fondo.png');
 	padding: 2rem;
 	border-radius: 0.5rem;
+	margin-top: 20%;
 }
 </style>
 </head>
@@ -35,76 +37,81 @@ if (session != null && session.getAttribute("usuario") != null && session.getAtt
 
 	<jsp:include page="NavBar.jsp" />
 	<!--
-    <% /*  
-        String respuesta = null;
-        if(session != null && session.getAttribute("respuesta") != null){
-            respuesta = (String)session.getAttribute("respuesta");
-            session.removeAttribute("respuesta");
-   */ %>
+    <%/*  
+									       String respuesta = null;
+									       if(session != null && session.getAttribute("respuesta") != null){
+									respuesta = (String)session.getAttribute("respuesta");
+									session.removeAttribute("respuesta");
+									  */%>
     <script> 
-        alert('<%/*= No hay usuario logueado*/%>');
+        alert('<%%>');
     </script>   
     <%/*
-        respuesta = null;
-    }
-  */  %>
+									        respuesta = null;
+									    }
+									  */%>
     -->
 
-	<div class="bg-white pt-3">
-		<div
-			class="content-background min-vh-100 d-flex align-items-center justify-content-center">
-			<section
-				class="text-gray-600 body-font min-vh-100 d-flex align-items-center justify-content-center w-100">
+	
 				<div
-					class="container px-5 py-5 mx-auto d-flex flex-column align-items-center">
-					<div class="menu-container w-100 md:w-50 lg:w-33">
-						<h1
-							class="title-font font-medium text-3xl text-gray-900 text-center">
+				class="content-background min-vh-100 d-flex align-items-center justify-content-center">
+
+				<section
+					class="text-gray-600 body-font min-vh-100 d-flex align-items-center justify-content-center w-80" style="min-width:550px;">
+				<div
+				class="container px-5 py-5 mx-auto d-flex flex-column align-items-center">
+						<div class="menu-container w-100 md:w-50 lg:w-33">
+							<h1
+								class="title-font font-medium text-3xl text-gray-900 text-center">
+				
 							Hola
-							<%=usuario %>
+							<%=usuario%>
 							!
 						</h1>
+					
+						<p class="leading-relaxed mt-4 text-center"><strong>    Bienvenido/a al
+							menú de Emerald   </strong></p>
 						<br>
-						<p class="leading-relaxed mt-4 text-center">Bienvenido/a al
-							menú clientes de Emerald</p>
-						<br>
+						
 						<div class="button-container space-y-4">
 							<form action="ServletCliente" method="get">
+							<center>
 								<div class="mb-3">
 									<button type="submit" name="btnPerfil" value="true"
-										class="btn btn-success btn-lg btn-block">Perfil</button>
+										class="btn btn-outline-success text-dark py-2 px-4 rounded text-lg w-50"><strong>Perfil</strong></button>
 								</div>
 								<div class="mb-3">
 									<button type="submit" name="btnCuentas" value="true"
-										class="btn btn-success btn-lg btn-block">Cuentas</button>
+										class="btn btn-outline-success text-dark py-2 px-4 rounded text-lg w-50"><strong>Cuentas</strong></button>
 								</div>
 							</form>
 							<form action="ServletTransferenciasCliente" method="get">
 								<div class="mb-3">
 									<button type="submit" name="btnTransferencias" value="true"
-										class="btn btn-success btn-lg btn-block">Transferencias</button>
+										class="btn btn-outline-success text-dark py-2 px-4 rounded text-lg w-50"><strong>Transferencias</strong></button>
 								</div>
 							</form>
 							<form action="ServletAdminPrestamos" method="get">
 								<div class="mb-3">
 									<button type="submit" name="btnSolicitarPrestamos" value="true"
-										class="btn btn-success btn-lg btn-block">Solicitar
-										préstamo</button>
+										class="btn btn-outline-success text-dark py-2 px-2  rounded text-lg w-50"><strong>Solicitar
+										préstamo</strong></button>
 								</div>
 							</form>
 							<form action="ServletPagoPrestamos" method="get">
 								<div class="mb-3">
 									<button type="submit" name="btnPagoDePrestamos" value="true"
-										class="btn btn-success btn-lg btn-block">Pago de
-										préstamos</button>
+										class="btn btn-outline-success text-dark py-2 px-2  rounded text-lg w-50"><strong>Pago de
+										préstamos</strong></button>
 								</div>
 							</form>
+								</center>
 						</div>
 					</div>
 				</div>
 			</section>
 		</div>
-	</div>
+	
 	<jsp:include page="Footer.jsp" />
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
