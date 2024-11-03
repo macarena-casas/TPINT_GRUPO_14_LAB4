@@ -108,38 +108,7 @@
 				      </div>
 				       u otro */
 			%>
-			<div class="relative d-inline-block text-left ml-3">
-				<input type="checkbox" class="d-none" id="menu-toggle2" /> <label
-					for="menu-toggle2"
-					class="btn btn-outline-success shadow-sm px-2 py-1 text-sm font-weight-medium text-dark hover-bg-light-green cursor-pointer">
-					<strong> Menú<i class="bi bi-arrow-down-short"></i></strong>
-				</label>
-				<div
-					class="dropdown-menu dropdown-menu-right mt-2 w-100 rounded shadow-lg bg-white"
-					id="menu">
-
-
-					<div class="py-1" role="none">
-						<a href="MenuCliente.jsp"
-							class="dropdown-item border-bottom border-success text-dark">Menú</a>
-						<a href="PerfilCliente.jsp" <%//"ServletCliente?btnPerfil"%>
-							class="dropdown-item text-dark">Perfil</a> <a
-							href="CuentasClientes.jsp" <%// "ServletCliente?btnCuentas"%>
-							class="dropdown-item text-dark">Cuentas</a> <a
-							href="ServletTransferenciasCliente?btnTransferencias"
-							class="dropdown-item text-dark">Transferencias</a> <a
-							href="SolicitarPrestamo.jsp"
-							<%//"ServletAdminPrestamos?btnSolicitarPrestamos"%>
-							class="dropdown-item text-dark">Solicitar Préstamo</a> <a
-							href="PagoPrestamo.jsp"<%// "ServletPagoPrestamos?btnPagoDePrestamos"%>
-							class="dropdown-item text-dark">Pago de Préstamos</a>
-						<form action="ServletSesion" method="post">
-							<button type="submit" name="btnCerrarSesion" value="true"
-								class="dropdown-item text-dark">Cerrar Sesión</button>
-						</form>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</header>
 
