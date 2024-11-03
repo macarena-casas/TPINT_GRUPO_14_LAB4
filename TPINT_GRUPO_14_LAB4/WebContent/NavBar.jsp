@@ -30,11 +30,14 @@
 </style>
 </head>
 <body>
-<header class="text-secondary fixed-top w-100 bg-rgba(255, 255, 255, 0.5) shadow" >
-  <div class="container d-flex flex-wrap p-3 flex-column flex-md-row align-items-center">
-    <nav class="d-flex flex-lg-grow-1 d-flex flex-wrap align-items-center text-base ml-md-auto">
-      <input type="hidden" class="mr-3 hover:text-success">
-    </nav>
+	<header
+		class="text-secondary fixed-top w-100 bg-rgba(255, 255, 255, 0.5) shadow">
+		<div
+			class="container d-flex flex-wrap p-3 flex-column flex-md-row align-items-center">
+			<nav
+				class="d-flex flex-lg-grow-1 d-flex flex-wrap align-items-center text-base ml-md-auto">
+				<input type="hidden" class="mr-3 hover:text-success">
+			</nav>
 
 			<a
 				class="d-flex order-first order-lg-0 flex-grow-1 flex-lg-grow-0 title-font font-weight-medium align-items-center text-success justify-content-center mb-3 mb-md-0">
@@ -71,7 +74,7 @@
 
 				</label>
 				<div
-					class="dropdown-menu dropdown-menu-right mt-2 w-100 rounded shadow-lg bg-white"
+					class="dropdown-menu dropdown-menu-right mt-2 w-30 rounded shadow-lg bg-white"
 					id="menu">
 					<div class="py-1" role="none">
 
@@ -108,7 +111,39 @@
 				      </div>
 				       u otro */
 			%>
-			
+			<div class="relative d-inline-block text-left ml-3">
+				<input type="checkbox" class="d-none" id="menu-toggle2" /> <label
+					for="menu-toggle2"
+					class="btn btn-outline-success shadow-sm px-2 py-1 text-sm font-weight-medium text-dark hover-bg-light-green cursor-pointer">
+					<strong> Menú<i class="bi bi-arrow-down-short"></i></strong>
+				</label>
+				<div
+					class="dropdown-menu dropdown-menu-right mt-2 w-30 rounded shadow-lg bg-white"
+					id="menu">
+
+
+					<div class="py-1" role="none">
+						<a href="MenuCliente.jsp"
+							class="dropdown-item border-bottom border-success text-dark">Menú</a>
+						<a href="PerfilCliente.jsp" <%//"ServletCliente?btnPerfil"%>
+							class="dropdown-item text-dark">Perfil</a> <a
+							href="CuentasClientes.jsp" <%// "ServletCliente?btnCuentas"%>
+							class="dropdown-item text-dark">Cuentas</a> <a
+							href="TransferenciasCliente.jsp" <%//"ServletTransferenciasCliente?btnTransferencias"%>
+							class="dropdown-item text-dark">Transferencias</a> <a
+							href="SolicitarPrestamo.jsp"
+							<%//"ServletAdminPrestamos?btnSolicitarPrestamos"%>
+							class="dropdown-item text-dark">Solicitar Préstamo</a> <a
+							href="PagoPrestamo.jsp"
+							<%// "ServletPagoPrestamos?btnPagoDePrestamos"%>
+							class="dropdown-item text-dark">Pago de Préstamos</a>
+						<form action="ServletSesion" method="post">
+							<button type="submit" name="btnCerrarSesion" value="true"
+								class="dropdown-item text-dark">Cerrar Sesión</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</header>
 
