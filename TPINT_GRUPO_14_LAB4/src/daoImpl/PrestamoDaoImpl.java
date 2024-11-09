@@ -40,7 +40,7 @@ public class PrestamoDaoImpl implements PrestamoDao {
 	        boolean InsertExitoso = false;
 	        try {
 	            statement = conexion.prepareStatement(insert);
-	            //statement.setInt(1, prestamo.getCuenta().getNumeroCuenta());
+	            statement.setInt(1, prestamo.getCuenta().getNroCuenta());
 	            statement.setDate(2, prestamo.getFecha());
 	            statement.setInt(3, prestamo.getPlazopago());
 	            statement.setInt(4, prestamo.getTipoprestamo().getIdtipoPrestamo());
@@ -123,7 +123,7 @@ public class PrestamoDaoImpl implements PrestamoDao {
 			ResultSet result_set = statement.executeQuery();
 			while (result_set.next()) {
 				int prestamoId = result_set.getInt("prestamo_id");
-				//cuenta.setNumeroCuenta(result_set.getInt("numero_cuenta"));
+				cuenta.setNroCuenta(result_set.getInt("numero_cuenta"));
 				java.sql.Date fecha = result_set.getDate("fecha");
 				int plazoPago = result_set.getInt("plazo_pago");
 				int tipoPrestamoId = result_set.getInt("tipo_prestamo_id");
