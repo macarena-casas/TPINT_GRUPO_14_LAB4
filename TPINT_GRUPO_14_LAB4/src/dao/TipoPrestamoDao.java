@@ -7,7 +7,7 @@ import entidad.TipoPrestamo;
 
 public interface TipoPrestamoDao {
 	
-	public TipoPrestamo get(int tipoprestamoid);
 	public TipoPrestamo get(int cuotas ,BigDecimal Monto);
+	public TipoPrestamo get(int tipoprestamoid);
 	
 }
