@@ -47,14 +47,14 @@
                        <td style="text-align: center"></td>
                        <td style="text-align: center"></td>
                        <td style="text-align: center">
-                           <form action="ServletAdminPrestamos" method="post" onsubmit="return confirmacion('autorizar');">
+                           <form action="ServletPrestamosAdmin" method="post" onsubmit="return confirmacion('autorizar');">
                                <input type="hidden" name="numeroPrestamo" value="">
                                <input type="hidden" name="cuentaDestino" value="">
                                <button type="submit" name="btnAutorizar" class="flex mx-auto mt-6 text-black bg-purple-500 border-0 py-2 px-5 focus:outline-none hover:bg-purple-600 rounded btn btn-success">Autorizar</button>
                            </form>
                        </td>
                        <td>
-                           <form action="ServletAdminPrestamos" method="post" onsubmit="return confirmacion('rechazar');">
+                           <form action="ServletPrestamosAdmin" method="post" onsubmit="return confirmacion('rechazar');">
                                <input type="hidden" name="numeroPrestamo" value="">
                                <button type="submit" name="btnRechazar" class="flex mx-auto mt-6 text-white bg-red-500 border-0 py-2 px-5 focus:outline-none hover:bg-red-600 rounded">Rechazar</button>
                            </form>

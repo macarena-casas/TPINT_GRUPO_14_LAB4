@@ -64,7 +64,7 @@ public class ServletPrestamosAdmin extends HttpServlet {
 			listaPrestamos = prestamoImpl.list();
 	        request.setAttribute("Lista_Prestamos", listaPrestamos);
 	        
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/ListarSolicitudesPrestamos.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/ListarSolicitudPrestamos.jsp");
 			dispatcher.forward(request, response);
 	    }
 		
@@ -218,7 +218,7 @@ public class ServletPrestamosAdmin extends HttpServlet {
  	        
             request.setAttribute("Lista_Prestamos", listaPrestamos);
  	        
- 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/ListarSolicitudesPrestamos.jsp");
+ 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/ListarSolicitudPrestamos.jsp");
  			dispatcher.forward(request, response);
 	    	
 	    } else if (request.getParameter("btnRechazar") != null) {
@@ -234,7 +234,7 @@ public class ServletPrestamosAdmin extends HttpServlet {
 	    	listaPrestamos = prestamoImpl.list();
 	        request.setAttribute("Lista_Prestamos", listaPrestamos);
 	        
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/ListarSolicitudesPrestamos.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/ListarSolicitudPrestamos.jsp");
 			dispatcher.forward(request, response);
 	    }
 	}
