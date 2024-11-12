@@ -81,21 +81,17 @@
 
 						<a href="MenuAdmin.jsp"
 							class="dropdown-item border-bottom border-success text-dark">Menú</a>
-						<a href="AgregarCliente.jsp"
-							<%// "ServletAdminCliente?btnAgregarCliente"%>
+						<a href= "ServletAdminCliente?btnAgregarCliente"
 							class="dropdown-item text-dark">Agregar Cliente</a> <a
-							href="ModificarCliente.jsp"
-							<%// "ServletAdminCliente?btnAdminClientes"%>
+							href="ServletAdminCliente?btnAdminClientes"
 							class="dropdown-item text-dark">Administrar clientes</a> <a
-							href="AgregarCuenta.jsp"
-							<%// "ServletAdminCuentas?btnAgregarCuenta"%>
+							href="ServletAdminCuentas?btnAgregarCuenta"
 							class="dropdown-item text-dark">Agregar Cuenta</a> <a
 							href="ServletAdminCuentas?btnAdminCuentas"
 							class="dropdown-item text-dark">Administrar cuentas</a> <a
-							href="ListarSolicitudPrestamos.jsp"
-							<%// "ServletAdminPrestamos?btnPrestamos"%>
+							href="ServletPrestamosAdmin?btnPrestamos"
 							class="dropdown-item text-dark">Préstamos</a> <a
-							href="Reportes.jsp" <%// "ServletReportes?btnReportes"%>
+							href="ServletReportes?btnReportes"
 							class="dropdown-item text-dark">Reportes</a>
 						<form action="ServletSesion" method="post">
 							<button type="submit" name="btnCerrarSesion" value="true"
@@ -125,17 +121,15 @@
 					<div class="py-1" role="none">
 						<a href="MenuCliente.jsp"
 							class="dropdown-item border-bottom border-success text-dark">Menú</a>
-						<a href="PerfilCliente.jsp" <%//"ServletCliente?btnPerfil"%>
+						<a href="ServletCliente?btnPerfil"
 							class="dropdown-item text-dark">Perfil</a> <a
-							href="CuentasClientes.jsp" <%// "ServletCliente?btnCuentas"%>
+							href= "ServletCliente?btnCuentas"
 							class="dropdown-item text-dark">Cuentas</a> <a
-							href="TransferenciasCliente.jsp" <%//"ServletTransferenciasCliente?btnTransferencias"%>
+							href="ServletTransferenciasClientes?btnTransferencias"
 							class="dropdown-item text-dark">Transferencias</a> <a
-							href="SolicitarPrestamo.jsp"
-							<%//"ServletAdminPrestamos?btnSolicitarPrestamos"%>
+							href="ServletPrestamosAdmin?btnSolicitarPrestamos"
 							class="dropdown-item text-dark">Solicitar Préstamo</a> <a
-							href="PagoPrestamo.jsp"
-							<%// "ServletPagoPrestamos?btnPagoDePrestamos"%>
+							href="ServletPrestamosPagos?btnPagoDePrestamos"
 							class="dropdown-item text-dark">Pago de Préstamos</a>
 						<form action="ServletSesion" method="post">
 							<button type="submit" name="btnCerrarSesion" value="true"

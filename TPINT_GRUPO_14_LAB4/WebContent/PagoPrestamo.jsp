@@ -1,9 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ page import="entidad.Prestamo"%>
 <%@ page import="entidad.Cuota"%>
 <%@ page import="entidad.Cuenta"%>
+<%@ page import="java.util.ArrayList" %>
 
+<%
+    ArrayList<Prestamo> prestamos = null;
+    prestamos = (ArrayList<Prestamo>)request.getAttribute("listaPrestamos");
+    ArrayList<Cuenta> cuentasPorCliente = (ArrayList<Cuenta>) request.getAttribute("Lista_Cuentas_cliente");
+    String respuesta = null;
+    if(session != null && session.getAttribute("respuesta") != null){
+    respuesta = (String)session.getAttribute("respuesta");
+    session.removeAttribute("respuesta");
+     %>
+    <script> 
+        alert('<%= respuesta%>');
+    </script>   
+    <%
+    respuesta = null;}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -42,11 +58,11 @@
 								<h1 class="text-center font-weight-medium mb-2 text-dark">Pago
 									Préstamos</h1>
 								<%
-									//if (prestamos == null || prestamos.isEmpty()) {
+									if (prestamos == null || prestamos.isEmpty()) {
 								%>
 								<h1>No hay pagos disponibles</h1>
 								<%
-									//} else {
+									} else {
 								%>
 								<p class="mx-auto leading-relaxed text-base">Ingrese en el
 									préstamo que desea pagar.</p>
@@ -54,18 +70,17 @@
 							<div class="w-75 mx-auto overflow-auto">
 								<div class="shadow-md">
 									<%
-										//for (Prestamo prestamo : prestamos) {
+										for (Prestamo prestamo : prestamos) {
 									%>
 									<div class="border-top border-gray-200">
 										<button
 											class="w-100 px-4 py-2 text-left focus:outline-none focus:bg-gray-200"
-											onclick="toggleSection('section<%//=prestamo.getPrestamoId()%>')">
+											onclick="toggleSection('section<%=prestamo.getIdPrestamo()%>')">
 											Id Préstamo:
-											<%
-											//=prestamo.getPrestamoId()
+											<%=prestamo.getIdPrestamo()
 										%>
 										</button>
-										<div id="section<%//=prestamo.getPrestamoId()%>"
+										<div id="section<%=prestamo.getIdPrestamo()%>"
 											class="d-none px-4 py-2">
 											<section class="text-gray-600 body-font">
 												<div class="container px-5 py-5 mx-auto">
@@ -80,12 +95,12 @@
 																<select id="CuentaOrigen" name="CuentaOrigen"
 																	class="form-select">
 																	<%
-																		//if (cuentasPorCliente != null && !cuentasPorCliente.isEmpty()) {
+																		if (cuentasPorCliente != null && !cuentasPorCliente.isEmpty()) {
 																	%>
 																	<%
 																		//for (Cuenta cuenta : cuentasPorCliente) {
 																	%>
-																	<option value="<%//=cuenta.getNumeroCuenta()%>">N°
+																	<option value="<% //=cuenta.getNumeroCuenta()%>">N°
 																		<%
 																		//=cuenta.getNumeroCuenta()
 																	%>
@@ -98,7 +113,7 @@
 																	%>
 																	<option value="">No tiene cuentas disponibles</option>
 																	<%
-																		//}
+																		}
 																	%>
 																</select>
 																<div
@@ -129,7 +144,7 @@
 																	<tr>
 																		<td>
 																			<%
-																				//=cuota.getCuotaId()
+																				//=cuota.getIdcuota()
 																			%>
 																		</td>
 																		<td>
@@ -158,7 +173,7 @@
 															</table>
 														</div>
 														<input type="hidden" name="prestamoId" id="prestamoId"
-															value="<%//=prestamo.getPrestamoId()%>">
+															value="<%=prestamo.getIdPrestamo()%>">
 														<div class="d-flex pl-4 mt-4 w-75 mx-auto">
 															<button type="submit" name="btnPagarCuota"
 																class="btn btn-success text-dark ml-auto">
@@ -171,11 +186,11 @@
 										</div>
 									</div>
 									<%
-										//	}
+											}
 									%>
 								</div>
 								<%
-									//}
+								 }
 								%>
 							</div>
 						</div>
@@ -203,3 +218,4 @@
 	</script>
 </body>
 </html>
+
