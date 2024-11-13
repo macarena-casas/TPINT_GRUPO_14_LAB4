@@ -3,13 +3,14 @@ package daoImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Conexion 
 {
 	public static Conexion instancia;
 	private Connection connection;
 	
-	private Conexion()
+	Conexion()
 	{
 		try
 		{
@@ -47,5 +48,18 @@ public class Conexion
 			e.printStackTrace();
 		}
 		instancia = null;
+	}
+	
+	public Statement getStatement() {
+	    try {
+	        if (this.connection != null && !this.connection.isClosed()) {
+	            return this.connection.createStatement();
+	        } else {
+	            System.out.println("Conexión no disponible.");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
 }
