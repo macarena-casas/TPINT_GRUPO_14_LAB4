@@ -20,6 +20,8 @@ respuesta = null;}
 
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,11 +79,19 @@ respuesta = null;}
 								<label class="form-label" for="Cuenta de Destino">Cuenta
 									de Destino</label>
 								<div class="position-relative">
+								
+								
+								
 									<select id="CuentaDestino" name="CuentaDestino"
 										class="form-select">
+						                <% if (cuentasPorCliente != null && !cuentasPorCliente.isEmpty()) { %>
+						                    <% for (Cuenta cuenta : cuentasPorCliente) { %>
+						                        <option value="<%= cuenta.getNroCuenta() %>">N° <%= cuenta.getNroCuenta() %></option>
+						                    <% } %>
+						                <% } else { %>
 
 										<option value="">No tiene cuentas disponibles</option>
-
+ <% } %>
 									</select>
 									<div
 										class="position-absolute top-50 end-0 translate-middle-y pe-2 text-gray-700">
@@ -151,7 +161,9 @@ respuesta = null;}
 							<div class="d-flex flex-column align-items-center w-100">
 								<button type="submit" onclick="return confirmarEnvio();"
 									id="btnSolicitar" name="btnSolicitar"
-									class="btn btn-success text-dark mt-4"><strong>Solicitar</strong></button>
+									class="btn btn-success text-dark mt-4">
+									<strong>Solicitar</strong>
+								</button>
 							</div>
 						</form>
 					</div>
