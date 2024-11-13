@@ -16,6 +16,8 @@ public class Conexion
 		{
 			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
 			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmeraldBank_GRUPO14?useSSL=false&useUnicode=yes&characterEncoding=UTF-8","root","root");
+			//this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/EmeraldBank_GRUPO14?useSSL=false&useUnicode=yes&characterEncoding=UTF-8","root","");
+
 			this.connection.setAutoCommit(false);
 		}
 		catch(Exception e)

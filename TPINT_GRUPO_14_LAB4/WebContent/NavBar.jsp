@@ -2,9 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%
 	String usuario = null;
-	String tipoUsuario = null;
+	Integer tipoUsuario = null; // Se declara tipoUsuario como Integer
+	if (session != null) {
+		Object userIdObj = session.getAttribute("userId");
+		if (userIdObj != null) {
+			usuario = userIdObj.toString();
+		}
+		tipoUsuario = (Integer) session.getAttribute("tipo_usuario_id"); // Retenido como Integer
+	}
 %>
-
 
 <!DOCTYPE html>
 
@@ -54,17 +60,16 @@
 					class="btn btn-outline-success border-0 py-1 px-3 hover:bg-green rounded text-base mt-3 mt-md-0"><strong>Log
 						in</strong></a>
 				<%
+					} else {
+				%>
+				<a href="Home.jsp"
+					class="btn btn-outline-success border-0 py-1 px-3 hover:bg-green rounded text-base mt-3 mt-md-0"><strong>Home</strong></a>
+				<%
 					}
 				%>
 			</div>
 
-			<%
-				/*
-								      <div class="relative d-inline-block text-left ml-3">
-								           <a href="MenuAdmin.jsp" class="btn btn-light border-0 py-1 px-3 focus:outline-none hover:bg-light rounded text-base mt-3 mt-md-0"></a>
-								      </div>
-								      un menu */
-			%>
+			<!-- Menú desplegable -->
 			<div class="relative d-inline-block text-left ml-3">
 				<input type="checkbox" class="d-none" id="menu-toggle1" /> <label
 					for="menu-toggle1"
@@ -77,11 +82,16 @@
 					class="dropdown-menu dropdown-menu-right mt-2 w-30 rounded shadow-lg bg-white"
 					id="menu">
 					<div class="py-1" role="none">
+						<a href="Home.jsp" class="dropdown-item text-dark">Inicio</a>
 
+						<%
+							if (tipoUsuario != null && tipoUsuario == 1) {
+						%>
+						<!-- Si es admin -->
 
 						<a href="MenuAdmin.jsp"
 							class="dropdown-item border-bottom border-success text-dark">Menú</a>
-						<a href= "ServletAdminCliente?btnAgregarCliente"
+						<a href="ServletAdminCliente?btnAgregarCliente"
 							class="dropdown-item text-dark">Agregar Cliente</a> <a
 							href="ServletAdminCliente?btnAdminClientes"
 							class="dropdown-item text-dark">Administrar clientes</a> <a
@@ -93,37 +103,17 @@
 							class="dropdown-item text-dark">Préstamos</a> <a
 							href="ServletReportes?btnReportes"
 							class="dropdown-item text-dark">Reportes</a>
-						<form action="ServletSesion" method="post">
-							<button type="submit" name="btnCerrarSesion" value="true"
-								class="dropdown-item text-dark">Cerrar Sesión</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<%
-				/*
-				  <div class="relative d-inline-block text-left ml-3">
-				           <a href="MenuCliente.jsp" class="btn btn-light border-0 py-1 px-3 focus:outline-none hover:bg-light rounded text-base mt-3 mt-md-0"></a>
-				      </div>
-				       u otro */
-			%>
-			<div class="relative d-inline-block text-left ml-3">
-				<input type="checkbox" class="d-none" id="menu-toggle2" /> <label
-					for="menu-toggle2"
-					class="btn btn-outline-success shadow-sm px-2 py-1 text-sm font-weight-medium text-dark hover-bg-light-green cursor-pointer">
-					<strong> Menú<i class="bi bi-arrow-down-short"></i></strong>
-				</label>
-				<div
-					class="dropdown-menu dropdown-menu-right mt-2 w-30 rounded shadow-lg bg-white"
-					id="menu">
 
 
-					<div class="py-1" role="none">
+						<%
+							} else if (tipoUsuario != null && tipoUsuario == 2) {
+						%>
+						<!-- Si es cliente -->
+
 						<a href="MenuCliente.jsp"
 							class="dropdown-item border-bottom border-success text-dark">Menú</a>
-						<a href="ServletCliente?btnPerfil"
-							class="dropdown-item text-dark">Perfil</a> <a
-							href= "ServletCliente?btnCuentas"
+						<a href="ServletCliente?btnPerfil" class="dropdown-item text-dark">Perfil</a>
+						<a href="ServletCliente?btnCuentas"
 							class="dropdown-item text-dark">Cuentas</a> <a
 							href="ServletTransferenciasClientes?btnTransferencias"
 							class="dropdown-item text-dark">Transferencias</a> <a
@@ -131,6 +121,11 @@
 							class="dropdown-item text-dark">Solicitar Préstamo</a> <a
 							href="ServletPrestamosPagos?btnPagoDePrestamos"
 							class="dropdown-item text-dark">Pago de Préstamos</a>
+
+
+						<%
+							}
+						%>
 						<form action="ServletSesion" method="post">
 							<button type="submit" name="btnCerrarSesion" value="true"
 								class="dropdown-item text-dark">Cerrar Sesión</button>
