@@ -1,3 +1,5 @@
+<%@page import="entidad.Cuenta"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,6 +14,14 @@
     <link rel="icon" type="image/png" href="Images/logo.png">
 </head>
 <body>
+<%
+ArrayList<Cuenta> listadoCuenta = new ArrayList<Cuenta>();
+if (request.getAttribute("listaCuentas") != null){
+	listadoCuenta = (ArrayList<Cuenta>)request.getAttribute("listaCuentas");
+	
+	
+}
+%>
     <jsp:include page="NavBar.jsp" />
     <div class="bg-white pt-5">
         <div class="container" style="width: 80%; overflow-y: auto; min-height: 600px;margin-top:10%">
@@ -32,13 +42,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Aquí se agregarán dinámicamente las filas de cuentas desde el servidor -->
+                    <!-- se agregarán dinámicamente las filas de cuentas desde el servidor -->
+                    <% for(Cuenta obj: listadoCuenta){%>
+                    	
+                         
                     <tr>
-                        <td class="text-center">Nombre del Cliente</td>
-                        <td class="text-center">Tipo de Cuenta</td>
-                        <td class="text-center">123456789</td>
-                        <td class="text-center">0012345678901234567890</td>
-                        <td class="text-center">$10,000</td>
+                        <td class="text-center"><%=obj.getCliente().getNombre()%> <%=obj.getCliente().getApellido() %></td>
+                        
+                        <td class="text-center"><%=obj.getTipoCuenta() %></td>
+                        <td class="text-center"><%=obj.getNroCuenta() %></td>
+                        <td class="text-center"><%=obj.getCbu() %></td>
+                        <td class="text-center">$<%=obj.getSaldo() %></td>
                         <td>
                             <form action="ServletAdminCuenta" method="get">
                                 <input type="hidden" name="cuentaId" value="123456789">
@@ -58,6 +72,7 @@
                             </form>
                         </td>
                     </tr>
+                    <%} %>
                 </tbody>
             </table>
             <br>
