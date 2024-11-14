@@ -57,12 +57,12 @@ public class ServletAdminCliente extends HttpServlet {
     	
     	HttpSession session = request.getSession();  
     	
-    	/*if(session == null || session.getAttribute("tipoUsuario") != "admin") {
+    	if(session == null || session.getAttribute("tipoUsuario") != "admin") {
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
     		dispatcher.forward(request, response);
     	}
     	
-    	*/
+    	
     	// condicion cuando este logeado
     	if (request.getParameter("btnAgregarCliente") != null) {
     		cargarDesplegables(request);
