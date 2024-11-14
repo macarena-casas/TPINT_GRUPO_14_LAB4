@@ -6,6 +6,7 @@ import entidad.Localidad;
 
 public interface LocalidadNegocio {
 	
-	
+	public Localidad get(int idLocalidad);
+	public ArrayList<Localidad> list();
 }
 

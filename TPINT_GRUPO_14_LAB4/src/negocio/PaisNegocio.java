@@ -6,6 +6,7 @@ import entidad.Pais;
 
 public interface PaisNegocio {
 	
-	
+	public Pais get(int idPais);
+	public ArrayList<Pais> list();
 	
 }

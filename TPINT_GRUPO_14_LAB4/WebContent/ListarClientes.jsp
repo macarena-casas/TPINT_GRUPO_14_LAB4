@@ -1,7 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="entidad.Cliente"%>
+<%
+	String respuesta = null;
+	if (session != null && session.getAttribute("respuesta") != null) {
+		respuesta = (String) session.getAttribute("respuesta");
+		session.removeAttribute("respuesta");
+%>
+<script> 
+	   	 alert('<%=respuesta%>');
+</script>
+<%
+	respuesta = null;
+	}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -23,13 +36,17 @@
 <body>
 	<jsp:include page="NavBar.jsp" />
 	<div class="bg-white pt-5">
-	<br><br>
+		<br> <br>
 		<div class="container"
 			style="width: 80%; overflow-y: auto; min-height: 600px;">
 			<h2 class="text-center text-dark mt-3">
 				<strong>Administrador de clientes</strong>
 			</h2>
 			<br> <br>
+			<%
+				ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+				listaClientes = (ArrayList<Cliente>) request.getAttribute("Lista_Clientes");
+			%>
 
 			<table id="tablaClientes" class="table table-striped table-bordered"
 				style="border: 2px; color: solid green;">
@@ -47,12 +64,19 @@
 				</thead>
 				<tbody>
 
+
+					<%
+						if (listaClientes != null && !listaClientes.isEmpty()) {
+					%>
+					<%
+						for (Cliente cliente : listaClientes) {
+					%>
 					<tr>
-						<td class="text-center"></td>
-						<td class="text-center"></td>
-						<td class="text-center"></td>
-						<td class="text-center"></td>
-						<td class="text-center"></td>
+						<td style="text-align: center"><%=cliente.getNombre()%></td>
+						<td style="text-align: center"><%=cliente.getApellido()%></td>
+						<td style="text-align: center"><%=cliente.getDni()%></td>
+						<td style="text-align: center"><%=cliente.getSexo()%></td>
+						<td style="text-align: center"><%=cliente.getNacionalidad()%></td>
 						<td>
 							<form action="ServletAdminCliente" method="get">
 								<center>
@@ -64,6 +88,7 @@
 							</form>
 							</center>
 						</td>
+
 						<td>
 							<form action="ServletAdminCliente" method="get">
 								<center>
@@ -88,7 +113,23 @@
 							</form>
 							</center>
 						</td>
+						<%
+							}
+						%>
+						<%
+							} else {
+						%>
+					
+					<tr>
+						<td colspan="8" style="text-align: center">No hay clientes
+							disponibles</td>
 					</tr>
+					<%
+						}
+					%>
+					</tr>
+
+
 
 				</tbody>
 			</table>

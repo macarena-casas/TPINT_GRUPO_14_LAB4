@@ -1,6 +1,7 @@
 package daoImpl;
 
 import java.sql.ResultSet;
+
 import java.util.ArrayList;
 
 import dao.PaisDao;
@@ -36,7 +37,22 @@ public class PaisDaoImpl implements PaisDao {
 
 	@Override
 	public ArrayList<Pais> list() {
-		// TODO Auto-generated method stub
-		return null;
+		Conexion conexion = new Conexion();
+		ArrayList<Pais> list_paises = new ArrayList<Pais>();
+		try {
+			conexion.setearConsulta(list);
+			ResultSet result_set = conexion.ejecutarLectura();
+			while(result_set.next()) {
+				list_paises.add(new Pais(result_set.getInt("pais_id"),result_set.getString("nombre")));
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			conexion.cerrarConexion();
+		}
+		return list_paises;
+
 	}
 }

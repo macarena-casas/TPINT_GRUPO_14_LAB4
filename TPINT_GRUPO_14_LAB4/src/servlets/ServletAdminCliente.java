@@ -115,12 +115,12 @@ public class ServletAdminCliente extends HttpServlet {
 				String dni = request.getParameter("dni");
 				Cliente auxCliente = (Cliente)listaClientes1.stream().filter(x -> x.getDni().equals(dni)).findFirst().orElse(null);
 				
-			/*	Provincia provincia = provinciaNegocioImpl.get(Integer.parseInt(request.getParameter("provincia")));
+				Provincia provincia = provinciaNegocioImpl.get(Integer.parseInt(request.getParameter("provincia")));
 				Localidad localidad = localidadNegocioImpl.get(Integer.parseInt(request.getParameter("localidad")));
 
-				if(localidad.getProvincia().getProvinciaId() != provincia.getProvinciaId()){
+				if(localidad.getProvincia().getIdprovincia() != provincia.getIdprovincia()){
 					throw new Exception("La localidad no pertenece a la provincia seleccionada");
-				}*/
+				}
 				String regex = "[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+"; //Solo admite caracteres alfabeticos
 				Pattern pattern = Pattern.compile(regex);
 				Matcher matcher = pattern.matcher(request.getParameter("nombre"));
@@ -129,7 +129,7 @@ public class ServletAdminCliente extends HttpServlet {
 				}
 
 				Cliente modCliente = new Cliente(
-            			/*request.getParameter("dni"),
+            			request.getParameter("dni"),
             			request.getParameter("cuil"),
             			request.getParameter("nombre"),
             			request.getParameter("apellido"),
@@ -140,12 +140,12 @@ public class ServletAdminCliente extends HttpServlet {
             			localidadNegocioImpl.get(Integer.parseInt(request.getParameter("localidad"))),
             			request.getParameter("Email"),
             			request.getParameter("telefonos"),
-            			new Usuario()*/ //Falta desarrolar Localidad y provincia
+            			new Usuario()
             			);
             	
         		Boolean cli_modificado = clienteNegocioImpl.update(modCliente);       		
         		Cliente cliente = clienteNegocioImpl.get(request.getParameter("dni"));
-        		/*Usuario modUser = usuarioNegocioImpl.get(cliente.getUsuario().getIdusuario());
+        		Usuario modUser = usuarioNegocioImpl.get(cliente.getUsuario().getIdusuario());
         		modUser.setContraseña((String) request.getParameter("contrasena"));
         		Boolean user_modificado = usuarioNegocioImpl.update(modUser);        		
         		cliente.setUsuario(modUser);
@@ -156,7 +156,7 @@ public class ServletAdminCliente extends HttpServlet {
 	            request.setAttribute("Lista_Clientes", listaClientes1);   
         		 RequestDispatcher dispatcher = request.getRequestDispatcher("/ClientesListar.jsp");
                 dispatcher.forward(request, response);
-        		}*/ // falta desarrollar Usuario negocio
+        		}
 			}catch(Exception e){
 				session.setAttribute("respuesta", "Error al guardar los cambios: " + e.getMessage());
 				listaClientes1 = clienteNegocioImpl.list();
@@ -168,10 +168,10 @@ public class ServletAdminCliente extends HttpServlet {
          }
     	 else if(request.getParameter("btnAgregarClienteNuevo") != null) { 
     		       		  
-    		   /* Provincia auxProv = (Provincia)listaProvincia.stream().filter(x -> x.getProvinciaId() ==  Integer.parseInt(request.getParameter("provincia"))).findFirst().orElse(null);
-    		  //  Localidad auxLoc = (Localidad)listaLocalidad.stream().filter(x -> x.getLocalidadId() ==  Integer.parseInt(request.getParameter("localidad"))).findFirst().orElse(null);
+    		   Provincia auxProv = (Provincia)listaProvincia.stream().filter(x -> x.getIdprovincia() ==  Integer.parseInt(request.getParameter("provincia"))).findFirst().orElse(null);
+    		  Localidad auxLoc = (Localidad)listaLocalidad.stream().filter(x -> x.getIdlocalidad() ==  Integer.parseInt(request.getParameter("localidad"))).findFirst().orElse(null);
    		    
-    		    if(auxProv.getProvinciaId() != auxLoc.getProvincia().getProvinciaId()) {
+    		    if(auxProv.getIdprovincia() != auxLoc.getProvincia().getIdprovincia()) {
 	  	        	session.setAttribute("respuesta", "La localidad no pertenece a la provincia seleccionada");
 	  	        	cargarDesplegables(request);
 	  	            RequestDispatcher dispatcher = request.getRequestDispatcher("/AgregarCliente.jsp");
@@ -185,17 +185,17 @@ public class ServletAdminCliente extends HttpServlet {
 	                
 	                List<Cliente> auxLista = null;
 	                listaClientes1 = clienteNegocioImpl.list();
-	                auxLista = listaClientes1.stream().filter(x -> x.getDni().equals(auxDni) || x.getCuil().equals(auxCuil) || x.getUsuario().getNombreUsuario().equals(auxUsuario) || x.getCorreo().equals(auxEmail)).collect(Collectors.toList());
+	                auxLista = listaClientes1.stream().filter(x -> x.getDni().equals(auxDni) || x.getCuil().equals(auxCuil) || x.getUsuario().getNombreusuario().equals(auxUsuario) || x.getCorreo().equals(auxEmail)).collect(Collectors.toList());
 	      	
 	               if(auxLista==null || auxLista.isEmpty()) {
 	      		    
 	      		   int idpais =Integer.parseInt( request.getParameter("nacionalidad1")); 
-	             //  Pais cpais = paisNegocioImpl.get(idpais); //falta desarrollar paisnegocio
+	              Pais cpais = paisNegocioImpl.get(idpais); 
 	               int idprovincia = Integer.parseInt(request.getParameter("provincia"));
 	   		       Provincia cProvincia = provinciaNegocioImpl.get(idprovincia);
 	               int idlocalidad = Integer.parseInt(request.getParameter("localidad"));
 	               Localidad cLocalidad = localidadNegocioImpl.get(idlocalidad);
-	             //  cProvincia.setPais(cpais); //falta desarrollar provincia negico
+	              cProvincia.setPais(cpais); 
 	               cLocalidad.setProvincia(cProvincia);        
 	               String contraseña = request.getParameter("contrasena");
 	               TipoUsuarioNegocioImpl tipoUsuarioNegocioImpl = new TipoUsuarioNegocioImpl();
@@ -221,8 +221,9 @@ public class ServletAdminCliente extends HttpServlet {
 	            			request.getParameter("telefono"),
 	            			newUsuario
 	            	);
-	                 clienteNegocioImpl.insert(Clientenuevo);*/
-    		 // desarrollar loc y prov
+	      	     clienteNegocioImpl.insert(Clientenuevo);
+	      	    	
+    		
 	                 session.setAttribute("respuesta", "El cliente fue agregado exitosamente");
 	                 cargarDesplegables(request);
 	                RequestDispatcher dispatcher = request.getRequestDispatcher("/AgregarCliente.jsp");
@@ -239,17 +240,17 @@ public class ServletAdminCliente extends HttpServlet {
     		    
     	 } 
         
-      // }
-    //}
+       }
+    }
     
     
     
     private void cargarDesplegables(HttpServletRequest request) {
-    	//listaPais = paisNegocioImpl.list();    	
+    	listaPais = paisNegocioImpl.list();   	
       	request.setAttribute("Lista_Paises", listaPais);
-      	//listaLocalidad = localidadNegocioImpl.list();
+      listaLocalidad = localidadNegocioImpl.list();
       	request.setAttribute("Lista_Localidades", listaLocalidad);
-      	//listaProvincia = provinciaNegocioImpl.list();
+      	listaProvincia = provinciaNegocioImpl.list();
       	request.setAttribute("Lista_Provincias", listaProvincia);
 	}
 }

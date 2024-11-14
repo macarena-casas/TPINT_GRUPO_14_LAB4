@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 
 
@@ -81,7 +82,10 @@ public class Conexion {
             comando.setDouble(index, (Double) obj);
         } else if (obj instanceof Long) {
             comando.setLong(index, (Long) obj);
-        } else if (obj == null) {
+        }else if (obj instanceof Date) {
+        	comando.setDate(index, (java.sql.Date) obj); 
+        }
+        else if (obj == null) {
             comando.setNull(index, java.sql.Types.NULL);
         } else {
             throw new SQLException("Tipo de dato no soportado.");
